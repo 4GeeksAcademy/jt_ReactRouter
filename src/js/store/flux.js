@@ -12,7 +12,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+			characters: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -37,7 +38,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
-			}
+			},
+			loadCharacters: () => {
+				fetch("https://rickandmortyapi.com/api/character")
+				.then(response => response.json())
+				.then((response)=> {
+					console.log(response)
+					setStore({characters: response.results})
+				})
+			},
 		}
 	};
 };
