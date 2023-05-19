@@ -13,7 +13,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
-			characters: []
+			characters: [],
+			favorites: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -46,6 +47,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(response)
 					setStore({characters: response.results})
 				})
+			},
+			setFavorite: (character) => {
+				const store = getStore()
+				console.log([...store.favorite, character])
+				setStore({ favorite: [...store.favorite, character]})
 			},
 		}
 	};
