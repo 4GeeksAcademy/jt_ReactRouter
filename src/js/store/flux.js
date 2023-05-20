@@ -14,7 +14,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			characters: [],
-			favorites: []
+			favorites: [],
+			character: null,
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -48,6 +49,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({characters: response.results})
 				})
 			},
+
+			getCharacter: (id) => {
+				fetch(`https://rickandmortyapi.com/api/character/${id}`)
+				.then(response => response.json())
+				.then((response)=> {
+					console.log(response);
+					setStore({character: response });
+				});
+			},
+
 			setFavorite: (character) => {
 				const store = getStore()
 				console.log([...store.favorite, character])
