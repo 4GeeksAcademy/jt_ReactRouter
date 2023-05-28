@@ -14,7 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			characters: [],
-			favorites: [],
+			favorite: [],
 			character: null,
 		},
 		actions: {

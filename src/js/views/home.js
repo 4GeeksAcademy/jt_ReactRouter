@@ -1,10 +1,10 @@
 import React, {useContext} from "react";
 import "../../styles/home.css";
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
+import { Link, useActionData } from "react-router-dom";
 
 export const Home = () => {
-	const {store } = useContext(Context)
+	const {store, actions } = useContext(Context)
 	return (
 	<div className="container">
 		<div className="row">
@@ -20,7 +20,7 @@ export const Home = () => {
     									<h5 className="card-title">{character.name}</h5>
    											 <p className="card-text">{character.species}</p>
     											<Link to={`/character/${character.id}`} className="btn btn-danger mx-2">Ver más...</Link>
-													<button className="btn btn-danger mx-2">Like</button>
+													<button className="btn btn-danger mx-2" onClick={() => {actions.setFavorite(character.name)}}>Like</button>
 												
 									</div>
   							</div>
